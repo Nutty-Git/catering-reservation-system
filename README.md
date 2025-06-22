@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# 🍽️ Catering Reservation and Ordering System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack catering reservation and online ordering platform built using **ReactJS** and **Firebase**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+### 👥 User Module
+- Register & Login with Firebase Authentication
+- Browse available catering items
+- Add items to cart
+- Place orders
+- View order history
+- Profile with image upload
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🧑‍💼 Admin Module
+- Upload products with images
+- Edit product name and price
+- Delete products (Firestore + Storage)
+- View dashboard with product/order count
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔐 Security
+- Route protection (private routes)
+- Admin-only access to admin panel & dashboard
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ⚙️ Tech Stack
 
-### `npm run build`
+- **Frontend**: ReactJS, HTML, CSS, JavaScript
+- **Backend**: Firebase Auth, Firestore, Firebase Storage
+- **Deployment**: GitHub (Firebase Hosting optional)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📁 Folder Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+src/
+├── components/
+│ └── Navbar.js, PrivateRoute.js, AdminRoute.js
+├── pages/
+│ └── Home.js, Login.js, Register.js, Cart.js, Profile.js
+│ └── AddProduct.js, AdminPanel.js, Dashboard.js, Order.js
+├── firebase/
+│ └── config.js
+└── utils/
+└── uploadImage.js, logger.js
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠️ Local Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/Nutty-Git/catering-reservation-system.git
+cd catering-reservation-system
+npm install
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+🔐 Firebase Setup
+Create a project at https://console.firebase.google.com
+Enable:
+Authentication (Email/Password)
+Firestore Database
+Firebase Storage
+Add your Firebase config in firebase/config.js
 
-## Learn More
+✨ Credits
+Developed by: Shruti Hedau
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
