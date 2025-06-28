@@ -1,75 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import { db } from '../firebase/config';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import React from 'react';
 
 function Home() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
-        const snapshot = await getDocs(q);
-        const list = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        setProducts(list);
-      } catch (err) {
-        console.error('Error fetching products:', err);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  const handleAddToCart = (product) => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const updatedCart = [...cart, product];
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    alert(`${product.name} added to cart!`);
-  };
+  const menuImages = [
+    { src: "/menu/todayspecial.jpg", alt: "Today's Special" },
+    { src: "/menu/breakfast.jpg", alt: "Breakfast" },
+    { src: "/menu/starters.jpg", alt: "Starter" },
+    { src: "/menu/maincourse.jpg", alt: "Main Course" },
+    { src: "/menu/drinks.jpg", alt: "Drinks" },
+    { src: "/menu/desserts.jpg", alt: "Desserts" }
+  ];
 
   return (
     <div style={{ padding: '40px' }}>
-      <h2>Available Catering Items</h2>
-
-      {products.length === 0 ? (
-        <p>No products available. Please check back later.</p>
-      ) : (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '20px' }}>
-          {products.map(product => (
-            <div key={product.id} style={{
-              border: '1px solid #ccc',
-              borderRadius: '8px',
-              padding: '15px',
-              width: '200px',
-              textAlign: 'center'
-            }}>
-              <img
-                src={product.imageUrl}
-                alt={product.name}
-                style={{ width: '100%', height: '150px', objectFit: 'cover' }}
-              />
-              <h4 style={{ margin: '10px 0' }}>{product.name}</h4>
-              <p>₹{product.price}</p>
-              <button
-                onClick={() => handleAddToCart(product)}
-                style={{
-                  marginTop: '10px',
-                  padding: '6px 12px',
-                  background: '#28a745',
-                  color: 'white',
-                  border: 'none',
-                  cursor: 'pointer'
-                }}
-              >
-                Add to Cart
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '30px',
+        maxWidth: '1200px',
+        margin: '0 auto'
+      }}>
+        {menuImages.map((img, index) => (
+          <div key={index} style={{
+            width: '100%',
+            height: '480px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '12px',
+            backgroundColor: '#fff',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
+            overflow: 'hidden'
+          }}>
+            <img
+              src={img.src}
+              alt={img.alt}
+              style={{
+                maxHeight: '100%',
+                maxWidth: '100%',
+                objectFit: 'contain',
+                display: 'block'
+              }}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
